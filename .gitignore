@@ -1,0 +1,24 @@
+# PHP
+*.log
+*.cache
+.htaccess.local
+
+# Database
+*.sql.bak
+config/database.local.php
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+.env.local
+
