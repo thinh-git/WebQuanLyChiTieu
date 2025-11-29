@@ -47,19 +47,93 @@ requireLogin();
     </script>
 </head>
 <body>
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
     <nav class="navbar">
-        <div class="container">
+        <div class="navbar-container">
             <div class="nav-brand">
-                <h1>💰 Quản Lý Chi Tiêu</h1>
+                <a href="<?php echo base_url('dashboard.php'); ?>" class="brand-link">
+                    <div class="brand-icon">
+                        <i class="fas fa-wallet"></i>
+                    </div>
+                    <div class="brand-text">
+                        <span class="brand-title">Quản Lý Chi Tiêu</span>
+                        <span class="brand-subtitle">Personal Finance</span>
+                    </div>
+                </a>
             </div>
-            <ul class="nav-menu">
-                <li><a href="<?php echo base_url('dashboard.php'); ?>" class="<?php echo basename($_SERVER['PHP_SELF']) == 'dashboard.php' ? 'active' : ''; ?>"><i class="fas fa-home"></i> Trang chủ</a></li>
-                <li><a href="<?php echo base_url('add_expense.php'); ?>" class="<?php echo basename($_SERVER['PHP_SELF']) == 'add_expense.php' ? 'active' : ''; ?>"><i class="fas fa-plus"></i> Thêm giao dịch</a></li>
-                <li><a href="<?php echo base_url('categories.php'); ?>" class="<?php echo basename($_SERVER['PHP_SELF']) == 'categories.php' ? 'active' : ''; ?>"><i class="fas fa-tags"></i> Danh mục</a></li>
-                <li><a href="<?php echo base_url('budgets.php'); ?>" class="<?php echo basename($_SERVER['PHP_SELF']) == 'budgets.php' ? 'active' : ''; ?>"><i class="fas fa-piggy-bank"></i> Ngân sách</a></li>
-                <li><a href="<?php echo base_url('reports.php'); ?>" class="<?php echo basename($_SERVER['PHP_SELF']) == 'reports.php' ? 'active' : ''; ?>"><i class="fas fa-chart-bar"></i> Thống kê</a></li>
-                <li><a href="<?php echo base_url('api/auth.php?action=logout'); ?>" class="logout-btn">Đăng xuất (<?php echo htmlspecialchars(getCurrentUsername()); ?>)</a></li>
-            </ul>
+            
+            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <div class="nav-menu-wrapper" id="navMenuWrapper">
+                <ul class="nav-menu">
+                    <li>
+                        <a href="<?php echo base_url('dashboard.php'); ?>" class="nav-link <?php echo basename($_SERVER['PHP_SELF']) == 'dashboard.php' ? 'active' : ''; ?>">
+                            <i class="fas fa-home"></i>
+                            <span>Trang chủ</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="<?php echo base_url('add_expense.php'); ?>" class="nav-link <?php echo basename($_SERVER['PHP_SELF']) == 'add_expense.php' ? 'active' : ''; ?>">
+                            <i class="fas fa-plus-circle"></i>
+                            <span>Thêm giao dịch</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="<?php echo base_url('categories.php'); ?>" class="nav-link <?php echo basename($_SERVER['PHP_SELF']) == 'categories.php' ? 'active' : ''; ?>">
+                            <i class="fas fa-tags"></i>
+                            <span>Danh mục</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="<?php echo base_url('budgets.php'); ?>" class="nav-link <?php echo basename($_SERVER['PHP_SELF']) == 'budgets.php' ? 'active' : ''; ?>">
+                            <i class="fas fa-piggy-bank"></i>
+                            <span>Ngân sách</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="<?php echo base_url('reports.php'); ?>" class="nav-link <?php echo basename($_SERVER['PHP_SELF']) == 'reports.php' ? 'active' : ''; ?>">
+                            <i class="fas fa-chart-line"></i>
+                            <span>Thống kê</span>
+                        </a>
+                    </li>
+                </ul>
+                
+                <div class="nav-user">
+                    <div class="user-dropdown">
+                        <button class="user-toggle" id="userToggle" aria-label="User menu">
+                            <div class="user-avatar">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <span class="user-name"><?php echo htmlspecialchars(getCurrentUsername()); ?></span>
+                            <i class="fas fa-chevron-down dropdown-icon"></i>
+                        </button>
+                        <div class="user-dropdown-menu" id="userDropdownMenu">
+                            <div class="user-info">
+                                <div class="user-avatar-large">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                                <div class="user-details">
+                                    <strong><?php echo htmlspecialchars(getCurrentUsername()); ?></strong>
+                                    <span>Người dùng</span>
+                                </div>
+                            </div>
+                            <div class="dropdown-divider"></div>
+                            <a href="<?php echo base_url('dashboard.php'); ?>" class="dropdown-item">
+                                <i class="fas fa-home"></i>
+                                <span>Trang chủ</span>
+                            </a>
+                            <a href="<?php echo base_url('api/auth.php?action=logout'); ?>" class="dropdown-item logout-item">
+                                <i class="fas fa-sign-out-alt"></i>
+                                <span>Đăng xuất</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </nav>
     <main class="main-content">
